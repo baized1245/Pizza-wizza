@@ -3,8 +3,13 @@ import Link from "next/link";
 import React from "react";
 import { BiCart } from "react-icons/bi";
 import { HiOutlineLogin, HiOutlineUserAdd } from "react-icons/hi";
+import { CiDark } from "react-icons/ci";
+import { MdOutlineLightMode } from "react-icons/md";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
+  const { theme, setTheme } = useTheme();
+
   return (
     <header className="text-white-100 sticky top-0 z-50 bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700 body-font">
       <div className="container mx-auto flex flex-wrap p-3 flex-col md:flex-row items-center">
@@ -50,6 +55,13 @@ const Navbar = () => {
             <HiOutlineUserAdd className="w-5 h-5 mx-1" />
           </Link>
         </nav>
+        <button
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="text-white bg-black rounded-full p-1 dark:text-black dark:bg-white flex items-center"
+        >
+          <CiDark className="size-4" /> /
+          <MdOutlineLightMode className="size-4" />
+        </button>
       </div>
     </header>
   );
